@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <h1>Mee te brengen van de Colruyt</h1>
+
+  <ul id="list">
+
+
+
+  </ul>
+
+  <input type="text" id="product">
+  <button onclick="addProduct()">Add</button>
+  <button onclick="removeProduct()">Remove</button>
+
+  <script>
+    var products = ["Kip", "Waspoeder", "Alcoholstift", "Witte Wijn"];
+    var product = document.getElementById("product");
+    var list = document.getElementById("list");
+
+    function addProduct(){
+      var newProduct = product.value;
+      products.push(newProduct);
+      product.value = "";
+
+      console.log(products);
+
+      updateList();
+    }
+
+    function removeProduct(){
+      var checkIndex = product.value;
+      var index = products.indexOf(checkIndex);
+      product.value = "";
+
+      if (index !== -1) {
+        products.splice(index, 1);
+      } else {
+        console.log("Product niet gevonden!");
+      }
+
+      console.log(products);
+
+      updateList();
+
+    }
+
+    function updateList(){
+      list.innerHTML =  "<li>" + products.join("</li><li>") + "</li>";
+
+    }
+
+  updateList();
+
+  </script>
+
+</body>
+</html>
